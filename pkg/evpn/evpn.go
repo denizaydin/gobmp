@@ -100,6 +100,11 @@ func UnmarshalEVPNNLRI(b []byte) (*Route, error) {
 		var err error
 		n := &NLRI{}
 		n.RouteType = b[p]
+		// A basic checking for path-id which is used when add path capability is enabled.
+		if n.RouteType == 0 || n.RouteType > 5 {
+			p = p + 4
+			n.RouteType = b[p]
+		}
 		p++
 		n.Length = b[p]
 		p++
