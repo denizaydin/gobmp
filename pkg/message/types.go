@@ -529,6 +529,7 @@ type Stats struct {
 	RemoteIP                   string `json:"remote_ip,omitempty"`
 	PeerRD                     string `json:"peer_rd,omitempty"`
 	Timestamp                  string `json:"timestamp,omitempty"`
+	RejectedPrefixs            uint32 `json:"rejected_prefix,omitempty"`
 	DuplicatePrefixs           uint32 `json:"duplicate_prefix,omitempty"`
 	DuplicateWithDraws         uint32 `json:"duplicate_withdraws,omitempty"`
 	InvalidatedDueCluster      uint32 `json:"invalidated_due_cluster,omitempty"`

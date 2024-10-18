@@ -37,6 +37,8 @@ func (p *producer) produceStatsMessage(msg bmp.Message) {
 	m.RemoteBGPID = msg.PeerHeader.GetPeerBGPIDString()
 	for _, tlv := range StatsMsg.StatsTLV {
 		switch tlv.InformationType {
+		case 0:
+			m.RejectedPrefixs = binary.BigEndian.Uint32(tlv.Information)
 		case 1:
 			m.DuplicatePrefixs = binary.BigEndian.Uint32(tlv.Information)
 		case 2:
